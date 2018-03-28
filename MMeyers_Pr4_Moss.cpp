@@ -9,12 +9,14 @@ int main() {
 	float stateTax, stateTaxTotal = 0;
 	float fedTax, fedTaxTotal = 0;
 	float fica, ficaTotal = 0;
+	float totalNetPay = 0;
 
-	while (employeeNumber != 0){
 	cout << "Enter the following information:" << endl << endl;
 	cout << "Employee Number (0 to quit): ";
-
 	cin >> employeeNumber;
+
+	while (employeeNumber != 0) {
+
 	if (employeeNumber < 0) { //Validate input, redo if negative number
 		cout << "\nInvalid: Employee Number must be positive. To quit, enter 0.";
 		cout << "\nEmployee Number (0 to quit): ";
@@ -67,8 +69,22 @@ int main() {
 	stateTaxTotal += stateTax;
 	ficaTotal += fica;
 
-	cout << "\n\nProcessing the next employee:" << endl;
+	totalNetPay = (grossTotal - fedTaxTotal - stateTaxTotal - ficaTotal);
+
+	//Leads into next loop. User may hit 0 to quit
+	cout << "\n\nProcessing the next employee:" << endl; 
+	cout << "Employee Number (0 to quit): ";
+	cin >> employeeNumber;
 	}
 	
+	//Print totals and final net
+	cout << "Total Gross Pay: " << grossTotal << endl;
+	cout << "Total Federal Tax: " << fedTaxTotal << endl;
+	cout << "Total State Tax: " << stateTaxTotal << endl;
+	cout << "Total FICA: " << ficaTotal << endl;
+	cout << "Total Net Pay: " << totalNetPay << endl;
+
+	system("PAUSE");
+
 	return 0;
 }
