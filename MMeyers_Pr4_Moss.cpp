@@ -13,46 +13,61 @@ int main() {
 	while (employeeNumber != 0){
 	cout << "Enter the following information:" << endl << endl;
 	cout << "Employee Number (0 to quit): ";
+
 	cin >> employeeNumber;
-	if (employeeNumber < 0) {
-		cout << "Invalid: Employee Number must be positive. To quit, enter 0.";
-		break;
+	if (employeeNumber < 0) { //Validate input, redo if negative number
+		cout << "\nInvalid: Employee Number must be positive. To quit, enter 0.";
+		cout << "\nEmployee Number (0 to quit): ";
+		cin >> employeeNumber;
 	}
 
 	cout << "\nGross pay: ";
 	cin >> grossPay;
-	if (grossPay < 0) {
-		cout << "Invalid: gross pay must not be negative.";
-		break;
+	if (grossPay < 0) { //Validate input, redo if negative number
+		cout << "\nInvalid: gross pay must not be negative.";
+		cout << "\nGross pay: ";
+		cin >> grossPay;
 	}
 
 	cout << "\nFederal Withholding: ";
 	cin >> fedTax;
-	if (fedTax < 0) {
-		cout << "Invalid: federal withholding must not be negative.";
-		break;
+	if (fedTax < 0) { //Validate input, redo if negative number
+		cout << "\nInvalid: federal withholding must not be negative.";
+		cout << "\nFederal Withholding: ";
+		cin >> fedTax;
 	}
 
 	cout << "\nState Withholding: ";
 	cin >> stateTax;
-	if (stateTax < 0) {
-		cout << "Invalid: state withholding must not be negative.";
-		break;
+	if (stateTax < 0) { //Validate input, redo if negative number
+		cout << "\nInvalid: state withholding must not be negative.";
+		cout << "\nState withholding: ";
+		cin >> stateTax;
 	}
 
 	cout << "\nFICA Withholding: ";
 	cin >> fica;
-	if (fica < 0) {
-		cout << "Invalid: FICA withholding must not be negative.";
-		break;
+	if (fica < 0) { //Validate input, redo if negative number
+		cout << "\nInvalid: FICA withholding must not be negative.";
+		cout << "\nFICA Withholding: ";
+		cin >> fica;
+
+
+		}
+	
+	//Check withholdings against gross pay
+	if ((stateTax + fedTax + fica) > grossPay) {
+		cout << "ERROR: withholdings may not exceed gross pay. Please enter information again.";
+		continue;
 	}
 
+	//If the check is good, add data to running totals
 	grossTotal += grossPay;
 	fedTaxTotal += fedTax;
 	stateTaxTotal += stateTax;
 	ficaTotal += fica;
 
-	cout << "Processing the next employee:" << endl;
+	cout << "\n\nProcessing the next employee:" << endl;
 	}
 	
 	return 0;
