@@ -36,24 +36,26 @@ using namespace std;
 
 int main() {
 	
-	unsigned int employeeNumber = 1;
-	float grossPay, grossTotal = 0;
-	float stateTax, stateTaxTotal = 0;
-	float fedTax, fedTaxTotal = 0;
-	float fica, ficaTotal = 0;
-	float totalNetPay = 0;
+	int employeeNumber = 1; //Holds Employee ID
+	double grossPay, grossTotal = 0; //Holds gross pay and gross pay total
+	float stateTax, stateTaxTotal = 0; //To hold state tax and state tax total
+	float fedTax, fedTaxTotal = 0; //To hold federal tax and federal tax total
+	float fica, ficaTotal = 0; //To hold FICA withholding and FICA total
+	double totalNetPay = 0; //Total net pay
+	const int QUIT_VALUE = 0; //Enter this value at time of Employee ID entry to quit
 
 	cout << "Enter the following information:" << endl << endl;
 	cout << "Employee Number (0 to quit): ";
 	cin >> employeeNumber;
 
-	while (employeeNumber > 0) {
-
+	while (employeeNumber != QUIT_VALUE) {
+	
 	if (employeeNumber < 0) { //Validate input, redo if negative number
-		cout << "\nInvalid: Employee Number must be positive. To quit, enter 0.";
+		cout << "Invalid: Employee Number must be positive. To quit, enter 0.";
 		cout << "\nEmployee Number (0 to quit): ";
 		cin >> employeeNumber;
-	}
+		continue;
+		}
 
 	cout << "Gross pay: ";
 	cin >> grossPay;
